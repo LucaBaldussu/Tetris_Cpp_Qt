@@ -66,7 +66,7 @@ void framegioco::ruotaDestra(){
 }
 
 void framegioco::muoviGiu(){
-    if
+
 }
 
 
