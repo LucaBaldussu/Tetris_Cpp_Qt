@@ -9,10 +9,12 @@ framegioco::framegioco(QWidget *parent) : QWidget(parent) {//costruttore
 
     for(int z = 0; z<areaX; z++){
         for (int v = 0; v<areaY; v++){
-            matrix[z][v] = new casella(z, v, this);
-            frameGriglia->addWidget(matrix[z][v], v, z);
+            sfondo[z][v] = new casella(z, v, this);
+            frameGriglia->addWidget(sfondo[z][v], v, z);
         }
     }
+
+
     setLayout(frameGriglia);
 
     framegioco::generaRandom();
@@ -22,9 +24,9 @@ framegioco::framegioco(QWidget *parent) : QWidget(parent) {//costruttore
 
 void framegioco::generaRandom(){//generazione nuova casella in posto vuoto casuale
 
-
     int random = rand()% 7 + 1;
-
+    xPezzoAttuale = 4 ;
+    yPezzoAttuale = 19 ;
     switch (random) {
     case 1:
 
@@ -64,7 +66,7 @@ void framegioco::ruotaDestra(){
 }
 
 void framegioco::muoviGiu(){
-
+    if
 }
 
 

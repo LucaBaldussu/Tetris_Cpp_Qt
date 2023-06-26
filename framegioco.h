@@ -11,11 +11,20 @@ class framegioco : public QWidget
 {   //dichiarazione frame di gioco
     Q_OBJECT//necessario per la definizione di slots nuovi
 public:
+
     static const int areaX = 10;//numero caselle orizzontali
     static const int areaY = 20;//numero caselle verticali
     framegioco(QWidget *parent = nullptr);
-    casella * matrix[areaX][areaY];//matrice di widget di x=n e y=n dimensioni
+    casella * sfondo[areaX][areaY];//matrice di widget di x=n e y=n dimensioni
+    int xPezzoAttuale;
+    int yPezzoAttuale;
+    int pezzoAttuale;//coordinate del centro del pezzettino che stiamo comandando
     QGridLayout * frameGriglia;
+
+
+
+
+
 protected:
     void keyPressEvent(QKeyEvent *event);
     void muoviGiu();

@@ -7,22 +7,16 @@ casella::casella(int x, int y, QWidget *parent): QLabel(parent)
 {
     pos_x=x;
     pos_y=y;
-    valore = 0;
+    tetramino = false;//non è occupata
+    pezzettino = false;//non è in controllo
     setAlignment(Qt::AlignCenter);
     setFrameStyle(QFrame::Panel | QFrame::Plain);
     setLineWidth(2);
     setMidLineWidth(3);
 }
-void casella::raddoppia(){
 
-    this->valore*=2;
-    testo.setNum(valore);
-    moltiplicabile = false;
-    this->setText(testo);
-
-}
 bool casella::vuoto(){
-    if (testo.isEmpty() && valore==0){
+    if (tetramino==false && pezzettino==false){
         return true;
     }
     else{
@@ -30,24 +24,18 @@ bool casella::vuoto(){
     }
 }
 void casella::svuota(){
-    testo.clear();
-    valore = 0;
-    this->setText(testo);
+
+    tetramino = false;
+    pezzettino = false;
 
 }
 void casella::clona(casella * daclonare){
-    valore = daclonare->valore;
-    testo = daclonare->testo;
-    moltiplicabile = daclonare->moltiplicabile;
+    tetramino = daclonare->tetramino;
+    pezzettino = daclonare->pezzettino;
     daclonare->svuota();
-    this->setText(testo);
-}
-void casella::fineTurno(){
-    moltiplicabile = true;
 
 }
+
 void casella::nuovo(){
-    valore = 2;
-    testo="2";
-    setText(testo);
+
 }
