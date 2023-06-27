@@ -27,15 +27,23 @@ void casella::svuota(){
 
     tetramino = false;
     pezzettino = false;
+    clear();
 
 }
 void casella::clona(casella * daclonare){
     tetramino = daclonare->tetramino;
     pezzettino = daclonare->pezzettino;
+    setPixmap(daclonare->pixmap());
     daclonare->svuota();
 
 }
 
 void casella::nuovo(){
-
+    tetramino = true;
+    pezzettino = true;
+    if(rosso.load("C:/Users/Utente/Documents/Tetris_Cpp_Qt/rosso.png")){
+        /** scale pixmap to fit in label'size and keep ratio of pixmap */
+        rosso = rosso.scaled(size(),Qt::KeepAspectRatio);
+        setPixmap(rosso);
+    }
 }

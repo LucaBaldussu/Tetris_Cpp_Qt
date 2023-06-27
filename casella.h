@@ -13,6 +13,9 @@ public:
     bool tetramino;//cella occupata?
     bool pezzettino; //cella pezzo tetramino comandato ora?
     casella(int x, int y, QWidget *parent = nullptr);
+
+    QPixmap rosso;
+
     void raddoppia();
     bool vuoto();
     void svuota();

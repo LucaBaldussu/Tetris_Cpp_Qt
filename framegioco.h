@@ -12,17 +12,16 @@ class framegioco : public QWidget
     Q_OBJECT//necessario per la definizione di slots nuovi
 public:
 
-    static const int areaX = 10;//numero caselle orizzontali
-    static const int areaY = 20;//numero caselle verticali
+    static const int realAreaX = 10;//numero caselle orizzontali
+    static const int realAreaY = 40;//numero caselle verticali
+    static const int visibleAreaX = 10;//numero caselle orizzontali
+    static const int visibleAreaY = 20;//numero caselle verticali
     framegioco(QWidget *parent = nullptr);
-    casella * sfondo[areaX][areaY];//matrice di widget di x=n e y=n dimensioni
+    casella * sfondo[realAreaX][realAreaY];//matrice di widget di x=n e y=n dimensioni
     int xPezzoAttuale;
     int yPezzoAttuale;
     int pezzoAttuale;//coordinate del centro del pezzettino che stiamo comandando
     QGridLayout * frameGriglia;
-
-
-
 
 
 protected:
