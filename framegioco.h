@@ -3,7 +3,8 @@
 
 #include <QWidget>
 #include <random>
-#include "casella.h"
+#include <tetramino.h>
+#include <casella.h>
 #include <QGridlayout>
 #include <QKeyEvent>
 
@@ -14,26 +15,38 @@ public:
 
     static const int realAreaX = 10;//numero caselle orizzontali
     static const int realAreaY = 40;//numero caselle verticali
-    static const int visibleAreaX = 10;//numero caselle orizzontali
-    static const int visibleAreaY = 20;//numero caselle verticali
-    framegioco(QWidget *parent = nullptr);
+    static const int visibleAreaX = 10;//numero caselle VISIBILI orizzontali
+    static const int visibleAreaY = 20;//numero caselle VISIBILI verticali
+
+    //dichiarazioni forme da spawnare//per i numeri dei pezzi riferirsi allo schema
+/*
+    tetramino formaI;//forma 1
+    tetramino forma0;//forma 2
+    tetramino formaLinv;//forma 3
+    tetramino formaL;//forma 4
+    tetramino formaS;//forma 5
+    tetramino formaT;//forma 6
+    tetramino formaZ;//forma 7
+*/
     casella * sfondo[realAreaX][realAreaY];//matrice di widget di x=n e y=n dimensioni
-    int xPezzoAttuale;
-    int yPezzoAttuale;
-    int pezzoAttuale;//coordinate del centro del pezzettino che stiamo comandando
+
     QGridLayout * frameGriglia;
+
+    framegioco(QWidget *parent = nullptr);
+
+    void stampaBlocco(tetramino * daStampare);
 
 
 protected:
+
     void keyPressEvent(QKeyEvent *event);
-    void muoviGiu();
-    void ruotaDestra();
-    void ruotaSinistra();
 
 private slots://dichiarazione slots ossia metodi collegabili a signals
 
 private:
+
     void generaRandom();
+
 };
 
 #endif // FRAME_H

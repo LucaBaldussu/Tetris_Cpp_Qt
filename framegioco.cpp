@@ -1,12 +1,13 @@
 #include "framegioco.h"
 #include <QDebug>
-//assegnazione costruttori classe
+
 framegioco::framegioco(QWidget *parent) : QWidget(parent) {//costruttore
 
     srand((unsigned) time(NULL));
 
     frameGriglia = new QGridLayout(this);
 
+    //creazione campo invisibile e visibile di gioco ossia un array di "Casella"
     for(int z = 0; z<realAreaX; z++){
         for (int v = 0; v<realAreaY; v++){
             sfondo[z][v] = new casella(z, v, this);
@@ -22,106 +23,67 @@ framegioco::framegioco(QWidget *parent) : QWidget(parent) {//costruttore
         }
     }
 
+    //creazione forme default
+
+
 
     setLayout(frameGriglia);
+    sfondo[5][30]->nuovo();//DEBUG
 
-    framegioco::generaRandom();
+    tetramino * prova = new tetramino((char *)"====\0");
+
+
+
+
+    stampaBlocco(prova);
+    //generaRandom();
 }
 
+void framegioco::stampaBlocco(tetramino * daStampare){
+
+    for (auto it = daStampare->blocchi.cbegin(); it != daStampare->blocchi.cend(); it++) {
+        sfondo[it->posY + daStampare->riga][it->posX + daStampare->colonna]->nuovo();
+    }
+
+}
 
 
 void framegioco::generaRandom(){//generazione nuova casella casuale in spawn
-    pezzoAttuale = rand()% 7 + 1;
-    xPezzoAttuale = 4 ;
-    yPezzoAttuale = 20 ;
+
+    int pezzoAttuale = rand()% 7 + 1;
+
+
     switch (pezzoAttuale) {
-    case 1://disegna I invertita
-        if (sfondo[3][20]->vuoto() && sfondo[4][20]->vuoto() && sfondo[5][20]->vuoto() && sfondo[6][20]->vuoto()){
-        //controllo che quelle caselle siano libere
-            sfondo[3][20]-> nuovo();
-            sfondo[4][20]-> nuovo();
-            sfondo[5][20]-> nuovo();
-            sfondo[6][20]-> nuovo();
-        }else {//finegioco
-        }
+    case 1:// disegna ----
+
+
         break;
 
     case 2://disegna blocco
-        if (sfondo[4][20]->vuoto() && sfondo[5][20]->vuoto() && sfondo[4][21]->vuoto() && sfondo[5][21]->vuoto()){
 
-            sfondo[4][20]-> nuovo();
-            sfondo[5][20]-> nuovo();
-            sfondo[4][21]-> nuovo();
-            sfondo[5][21]-> nuovo();
-        }else {
-        }
+
         break;
 
     case 3:// disegna --|
-        if (sfondo[4][20]->vuoto() && sfondo[5][20]->vuoto() && sfondo[6][20]->vuoto() && sfondo[6][21]->vuoto()){
-            sfondo[4][20]-> nuovo();
-            sfondo[5][20]-> nuovo();
-            sfondo[6][20]-> nuovo();
-            sfondo[6][21]-> nuovo();
-        }else {
-        }
+
          break;
 
     case 4://disegna |--
-         if (sfondo[4][20]->vuoto() && sfondo[5][20]->vuoto() && sfondo[6][20]->vuoto() && sfondo[4][21]->vuoto()){
-            sfondo[4][20]-> nuovo();
-            sfondo[5][20]-> nuovo();
-            sfondo[6][20]-> nuovo();
-            sfondo[4][21]-> nuovo();
-         }else {
-         }
+
         break;
 
     case 5://disegna s
-        if (sfondo[5][20]->vuoto() && sfondo[5][21]->vuoto() && sfondo[6][20]->vuoto() && sfondo[4][21]->vuoto()){
-            sfondo[5][20]-> nuovo();
-            sfondo[5][21]-> nuovo();
-            sfondo[6][20]-> nuovo();
-            sfondo[4][21]-> nuovo();
-        }else {
-        }
+
         break;
 
     case 6://disegna t
-        if (sfondo[5][20]->vuoto() && sfondo[5][21]->vuoto() && sfondo[6][20]->vuoto() && sfondo[4][20]->vuoto()){
-            sfondo[5][20]-> nuovo();
-            sfondo[5][21]-> nuovo();
-            sfondo[6][20]-> nuovo();
-            sfondo[4][20]-> nuovo();
-        }else {
-        }
+
         break;
 
-    case 7://disegna s invertita
-        if (sfondo[5][20]->vuoto() && sfondo[5][21]->vuoto() && sfondo[6][21]->vuoto() && sfondo[4][20]->vuoto()){
-            sfondo[5][20]-> nuovo();
-            sfondo[5][21]-> nuovo();
-            sfondo[6][21]-> nuovo();
-            sfondo[4][20]-> nuovo();
-        }else {
-        }
+    case 7://disegna z
+
         break;
     }
-}
-
-
-void framegioco::ruotaSinistra(){
-
-}
-
-
-void framegioco::ruotaDestra(){
-
-}
-
-void framegioco::muoviGiu(){
-
-
 }
 
 

@@ -30,7 +30,7 @@ void casella::svuota(){
     clear();
 
 }
-void casella::clona(casella * daclonare){
+void casella::clona(casella * daclonare){//clona e svuota precedente
     tetramino = daclonare->tetramino;
     pezzettino = daclonare->pezzettino;
     setPixmap(daclonare->pixmap());
